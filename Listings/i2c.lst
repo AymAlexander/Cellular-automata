@@ -1,0 +1,87 @@
+C51 COMPILER V9.57.0.0   I2C                                                               09/13/2020 21:25:49 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE I2C
+OBJECT MODULE PLACED IN .\Objects\i2c.obj
+COMPILER INVOKED BY: D:\Program Files\Keil_v5\C51\BIN\C51.EXE i2c.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\
+                    -Listings\i2c.lst) TABS(2) OBJECT(.\Objects\i2c.obj)
+
+line level    source
+
+   1          #include "i2c.h"
+   2          
+   3          void Wait()
+   4          {
+   5   1        while(!(I2CMSST & 0x40));
+   6   1        I2CMSST &= ~0x40;
+   7   1      }
+   8          
+   9          void Start()
+  10          {
+  11   1        I2CMSCR = 0x01;       //发送START命令
+  12   1        Wait();
+  13   1      }
+  14          
+  15          void SendData(char dat)
+  16          {
+  17   1        I2CTXD = dat;         //写数据到数据缓存区
+  18   1        I2CMSCR = 0x02;       //发送SEND命令
+  19   1        Wait();
+  20   1      }
+  21          
+  22          void RecvACK()
+  23          {
+  24   1        I2CMSCR = 0x03;
+  25   1        Wait();
+  26   1      }
+  27          
+  28          char RecvData()
+  29          {
+  30   1        I2CMSCR = 0x04;     //发送RECV命令
+  31   1        Wait();
+  32   1        return I2CRXD;
+  33   1      }
+  34          
+  35          void SendACK()
+  36          {
+  37   1        I2CMSST = 0x00;   //设置ACK信号
+  38   1        I2CMSCR = 0x05;   //发送ACK命令
+  39   1        Wait();
+  40   1      }
+  41          
+  42          void SendNAK()
+  43          {
+  44   1        I2CMSST = 0x01;   //设置NAK信号
+  45   1        I2CMSCR = 0x05;   //发送ACK命令
+  46   1        Wait();
+  47   1      }
+  48          
+  49          void Stop()
+  50          {
+  51   1        I2CMSCR = 0x06;   //发送STOP命令
+  52   1        Wait();
+  53   1      }
+  54          
+C51 COMPILER V9.57.0.0   I2C                                                               09/13/2020 21:25:49 PAGE 2   
+
+  55          void I2Cinit()
+  56          {
+  57   1        P_SW2 = 0x80;
+  58   1        I2CCFG = 0xe0;      //使能I2C主机模式
+  59   1        I2CCFG = 0xc2;
+  60   1        I2CMSST = 0x00;
+  61   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    115    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -18,20 +18,21 @@ Hex Converter:   OH51.exe V2.7.0.0
 CPU DLL:         S8051.DLL V3.113.0.0
 Dialog DLL:      DP51.DLL V2.64.0.0 
 <h2>Project:</h2>
-D:\Documents\CodeWarehouse\C\STC8a8k 1106 GOL\12864GOL.uvproj
-Project File Date:  08/05/2020
+D:\Documents\CodeWarehouse\C\STC8F2K 1306 GOL\12864GOL.uvproj
+Project File Date:  09/11/2020
 
 <h2>Output:</h2>
 Rebuild target 'Target 1'
 compiling main.c...
-GOL.h(5): warning C318: can't open file 'painting_g.h'
-main.c(13): warning C182: pointer to different objects
-main.c(13): warning C182: pointer to different objects
+main.c(8): warning C206: 'I2Cinit': missing function-prototype
+main.c(14): warning C182: pointer to different objects
 main.c(14): warning C182: pointer to different objects
 main.c(15): warning C182: pointer to different objects
-main.c(15): warning C182: pointer to different objects
 main.c(16): warning C182: pointer to different objects
+main.c(16): warning C182: pointer to different objects
+main.c(17): warning C182: pointer to different objects
 compiling OLED.c...
+compiling i2c.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_OLED_SET_POS?OLED
@@ -39,9 +40,16 @@ linking...
     SEGMENT: ?PR?OLED_DISPLAY_ON?OLED
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?OLED_DISPLAY_OFF?OLED
-Program Size: data=14.0 xdata=2048 code=1912
-".\Objects\12864GOL" - 0 Error(s), 10 Warning(s).
-Build Time Elapsed:  00:00:00
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?RECVDATA?I2C
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SENDACK?I2C
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SENDNAK?I2C
+Program Size: data=18.0 xdata=2048 code=2141
+creating hex file from ".\Objects\12864GOL"...
+".\Objects\12864GOL" - 0 Error(s), 13 Warning(s).
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

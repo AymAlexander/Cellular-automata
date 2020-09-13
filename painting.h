@@ -1,7 +1,7 @@
 #ifndef _painting_h
 #define _painting_h
 
-#include <REG51.H>
+#include <STC8.H>
 #include <math.h>
 
 #define u8 unsigned char

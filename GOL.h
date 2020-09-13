@@ -2,7 +2,7 @@
 #define INC_GOL_H_
 
 #include <painting.h>
-#include <painting_g.h>
+//#include <painting_g.h>
 
 #define u8 unsigned char
 #define u16 unsigned int
